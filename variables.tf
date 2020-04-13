@@ -1,4 +1,4 @@
-variable "namespsace" {
+variable "namespace" {
     description = "The project namespace to use for unique resource mapping"
     default     = "s3backend"
     type        = string 

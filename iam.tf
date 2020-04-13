@@ -7,7 +7,7 @@ locals {
 resource "aws_iam_role" "iam_role" {
     name                = "${local.namespace}-tf-assume-role"
 
-    assume_role_policy  = <<- EOF
+    assume_role_policy  = <<-EOF
     {
         "Version": "2012-10-17",
         "Statement": [
@@ -22,7 +22,7 @@ resource "aws_iam_role" "iam_role" {
     }
     EOF
 
-    tags {
+    tags = {
         ResourceGroup   = local.namespace
     }
 }
@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "policy_doc" {
 
     statement {
         actions     = ["dynamodb:GetItem", "dynamodb:PutItem", "dynamodb:DeleteItem"]
-        resources   = [aws_dynamo_db_table.dynamo_db_table.arn]
+        resources   = [aws_dynamodb_table.dynamodb_table.arn]
     }
 }
 
